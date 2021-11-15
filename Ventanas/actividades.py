@@ -59,14 +59,13 @@ class actividades:
 
 class Ui_MainWindow(object):
 
-    def showName(a, b):
+    def showName(self, none):
         myConnection = connect()
         myCursor = myConnection.cursor()
-        sql = """CREATE TABLE IF NOT EXISTS product
-                        (cod VARCHAR(45) NOT NULL,
-                        name VARCHAR(45) NOT NULL,
-                        price VARCHAR(45) NOT NULL,
-                        category VARCHAR(45) NOT NULL)"""
+        sql = "CALL newactividad("+self.inputID.text() + \
+            ",'"+self.inputName.text()+"','"+self.inputDescription.text() + \
+            "','"+self.inputDifficulty.text()+"',NULL)"
+        print(sql)
         myCursor.execute(sql)
         myConnection.commit()
         print("Finished SQL Query")
@@ -129,9 +128,9 @@ class Ui_MainWindow(object):
         self.label_30 = QtWidgets.QLabel(self.widget_2)
         self.label_30.setGeometry(QtCore.QRect(20, 280, 20, 20))
         self.label_30.setObjectName("label_30")
-        self.L_IDActividades2 = QtWidgets.QLineEdit(self.widget_2)
-        self.L_IDActividades2.setGeometry(QtCore.QRect(50, 280, 113, 20))
-        self.L_IDActividades2.setObjectName("L_IDActividades2")
+        self.inputID2 = QtWidgets.QLineEdit(self.widget_2)
+        self.inputID2.setGeometry(QtCore.QRect(50, 280, 113, 20))
+        self.inputID2.setObjectName("inputID2")
         self.BbuscarActividades = QtWidgets.QPushButton(self.widget_2)
         self.BbuscarActividades.setGeometry(QtCore.QRect(210, 280, 81, 21))
         self.BbuscarActividades.setStyleSheet("background-color: rgb(255, 0, 127);\n"
@@ -150,36 +149,36 @@ class Ui_MainWindow(object):
         self.label = QtWidgets.QLabel(self.widget_2)
         self.label.setGeometry(QtCore.QRect(50, 120, 21, 16))
         self.label.setObjectName("label")
-        self.L_IDACTIVIDADES = QtWidgets.QLineEdit(self.widget_2)
-        self.L_IDACTIVIDADES.setGeometry(QtCore.QRect(50, 140, 151, 31))
-        self.L_IDACTIVIDADES.setObjectName("L_IDACTIVIDADES")
+        self.inputID = QtWidgets.QLineEdit(self.widget_2)
+        self.inputID.setGeometry(QtCore.QRect(50, 140, 151, 31))
+        self.inputID.setObjectName("inputID")
         self.label_2 = QtWidgets.QLabel(self.widget_2)
         self.label_2.setGeometry(QtCore.QRect(220, 120, 47, 13))
         self.label_2.setObjectName("label_2")
-        self.L_NombreActividades = QtWidgets.QLineEdit(self.widget_2)
-        self.L_NombreActividades.setGeometry(QtCore.QRect(220, 140, 141, 31))
-        self.L_NombreActividades.setObjectName("L_NombreActividades")
+        self.inputName = QtWidgets.QLineEdit(self.widget_2)
+        self.inputName.setGeometry(QtCore.QRect(220, 140, 141, 31))
+        self.inputName.setObjectName("inputName")
         self.label_3 = QtWidgets.QLabel(self.widget_2)
         self.label_3.setGeometry(QtCore.QRect(380, 120, 71, 16))
         self.label_3.setObjectName("label_3")
-        self.L_DescripcionActividades = QtWidgets.QLineEdit(self.widget_2)
-        self.L_DescripcionActividades.setGeometry(
+        self.inputDescription = QtWidgets.QLineEdit(self.widget_2)
+        self.inputDescription.setGeometry(
             QtCore.QRect(380, 140, 141, 31))
-        self.L_DescripcionActividades.setObjectName("L_DescripcionActividades")
-        self.L_DificultadActividades = QtWidgets.QLineEdit(self.widget_2)
-        self.L_DificultadActividades.setGeometry(
+        self.inputDescription.setObjectName("inputDescription")
+        self.inputDifficulty = QtWidgets.QLineEdit(self.widget_2)
+        self.inputDifficulty.setGeometry(
             QtCore.QRect(50, 210, 151, 31))
-        self.L_DificultadActividades.setObjectName("L_DificultadActividades")
+        self.inputDifficulty.setObjectName("inputDifficulty")
         self.label_4 = QtWidgets.QLabel(self.widget_2)
         self.label_4.setGeometry(QtCore.QRect(50, 190, 71, 16))
         self.label_4.setObjectName("label_4")
         self.label_5 = QtWidgets.QLabel(self.widget_2)
         self.label_5.setGeometry(QtCore.QRect(220, 190, 81, 16))
         self.label_5.setObjectName("label_5")
-        self.L_CoordinadorActividades = QtWidgets.QLineEdit(self.widget_2)
-        self.L_CoordinadorActividades.setGeometry(
+        self.inputCoordinator = QtWidgets.QLineEdit(self.widget_2)
+        self.inputCoordinator.setGeometry(
             QtCore.QRect(220, 210, 141, 31))
-        self.L_CoordinadorActividades.setObjectName("L_CoordinadorActividades")
+        self.inputCoordinator.setObjectName("inputCoordinator")
         self.buttonAddActivity = QtWidgets.QPushButton(self.widget_2)
         self.buttonAddActivity.setGeometry(QtCore.QRect(560, 250, 75, 23))
         self.buttonAddActivity.setStyleSheet(
