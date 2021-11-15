@@ -347,7 +347,7 @@ p, li { white-space: pre-wrap; }
        <string>AGREGAR</string>
       </property>
      </widget>
-     <widget class="QTableWidget" name="T_Cronogramas">
+     <widget class="QTableWidget" name="tableSchedules">
       <property name="geometry">
        <rect>
         <x>20</x>
