@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets
-from database.connection import connect
+from database import connect
 from modelo.actividades import actividades
 
 
