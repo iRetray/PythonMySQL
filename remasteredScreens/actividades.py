@@ -49,7 +49,7 @@ class Ui_MainWindow(object):
         myConnection.commit()
         print("Finished SQL Procedure delactividades")
 
-    def modifyActivity(self, none):
+    def modifyByID(self, none):
         myConnection = connect()
         myCursor = myConnection.cursor()
         sql = "CALL modactividades("+self.inputID.text() + \
@@ -220,7 +220,7 @@ class Ui_MainWindow(object):
         self.buttonDelete.setText(_translate("MainWindow", "ELIMINAR"))
         self.buttonDelete.clicked.connect(self.deleteByID)
         self.buttonModify.setText(_translate("MainWindow", "MODIFICAR"))
-        self.buttonModify.clicked.connect(self.modifyActivity)
+        self.buttonModify.clicked.connect(self.modifyByID)
         self.label.setText(_translate("MainWindow", "ID :"))
         self.label_2.setText(_translate("MainWindow", "NOMBRE:"))
         self.label_3.setText(_translate("MainWindow", "DESCRIPCION:"))
