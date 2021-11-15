@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>702</width>
+    <height>554</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -374,7 +374,7 @@ background-color: rgb(255, 255, 0);</string>
        <string>AGREGAR</string>
       </property>
      </widget>
-     <widget class="QTreeWidget" name="tableActivities">
+     <widget class="QTableWidget" name="tableActivities">
       <property name="enabled">
        <bool>true</bool>
       </property>
@@ -411,23 +411,6 @@ background-color: rgb(255, 255, 0);</string>
         <string>Coordinador</string>
        </property>
       </column>
-      <item>
-       <property name="text">
-        <string>1</string>
-       </property>
-       <property name="text">
-        <string>Jose</string>
-       </property>
-       <property name="text">
-        <string>Otra cosa</string>
-       </property>
-       <property name="text">
-        <string>Hard</string>
-       </property>
-       <property name="text">
-        <string>Un men</string>
-       </property>
-      </item>
      </widget>
      <widget class="QPushButton" name="BSalirActividades">
       <property name="geometry">
@@ -447,16 +430,6 @@ background-color: rgb(255, 255, 0);</string>
      </widget>
     </widget>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>21</height>
-    </rect>
-   </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
