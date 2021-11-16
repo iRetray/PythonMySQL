@@ -25,39 +25,41 @@ class Ui_MainWindow(object):
     def searchByID(self, none):
         myConnection = connect()
         myCursor = myConnection.cursor()
-        sql = "CALL getactividadxid("+self.inputSearchID.text()+")"
+        sql = "CALL getcronogramas("+self.inputSearchID.text() + \
+            ", "+self.inputPlaceOld.text()+")"
         print(sql)
         myCursor.execute(sql)
         objects = myCursor.fetchall()
         print(objects)
         myConnection.commit()
-        self.tableActivities.setRowCount(0)
+        self.tableSchedules.setRowCount(0)
         for row_number, row_data in enumerate(objects):
-            self.tableActivities.insertRow(row_number)
+            self.tableSchedules.insertRow(row_number)
             for column_number, data in enumerate(row_data):
-                self.tableActivities.setItem(
+                self.tableSchedules.setItem(
                     row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
-        print("Finished SQL Procedure getactividadxid")
+        print("Finished SQL Procedure getcronogramas")
 
     def deleteByID(self, none):
         myConnection = connect()
         myCursor = myConnection.cursor()
-        sql = "CALL delactividades("+self.inputSearchID.text()+")"
+        sql = "CALL delcronogramas("+self.inputSearchID.text() + \
+            ","+self.inputPlaceOld.text()+")"
         print(sql)
         myCursor.execute(sql)
         myConnection.commit()
-        print("Finished SQL Procedure delactividades")
+        print("Finished SQL Procedure delcronogramas")
 
     def modifyByID(self, none):
         myConnection = connect()
         myCursor = myConnection.cursor()
-        sql = "CALL modactividades("+self.inputID.text() + \
-            ",'"+self.inputName.text()+"','"+self.inputDescription.text() + \
-            "','"+self.inputDifficulty.text()+"',NULL,"+self.inputSearchID.text()+")"
+        sql = "CALL modcronogramas("+self.inputID.text() + \
+            ",'"+self.inputPlace.text()+"',"+self.inputSearchID.text() + \
+            ","+self.inputPlaceOld.text()+")"
         print(sql)
         myCursor.execute(sql)
         myConnection.commit()
-        print("Finished SQL Procedure modactividades")
+        print("Finished SQL Procedure modcronogramas")
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -110,20 +112,20 @@ class Ui_MainWindow(object):
         self.label_27.setGeometry(QtCore.QRect(20, 280, 61, 20))
         self.label_27.setObjectName("label_27")
         self.inputSearchID = QtWidgets.QLineEdit(self.L_ActividadCronogramas)
-        self.inputSearchID.setGeometry(QtCore.QRect(80, 280, 113, 20))
+        self.inputSearchID.setGeometry(QtCore.QRect(80, 280, 91, 20))
         self.inputSearchID.setObjectName("inputSearchID")
         self.buttonSearch = QtWidgets.QPushButton(self.L_ActividadCronogramas)
-        self.buttonSearch.setGeometry(QtCore.QRect(220, 280, 81, 21))
+        self.buttonSearch.setGeometry(QtCore.QRect(380, 280, 81, 21))
         self.buttonSearch.setStyleSheet("background-color: rgb(255, 0, 127);\n"
                                         "background-color: rgb(85, 255, 0);")
         self.buttonSearch.setObjectName("buttonSearch")
         self.buttonDelete = QtWidgets.QPushButton(self.L_ActividadCronogramas)
-        self.buttonDelete.setGeometry(QtCore.QRect(340, 280, 75, 23))
+        self.buttonDelete.setGeometry(QtCore.QRect(470, 280, 75, 23))
         self.buttonDelete.setStyleSheet("background-color: rgb(255, 0, 127);\n"
                                         "background-color: rgb(85, 255, 0);")
         self.buttonDelete.setObjectName("buttonDelete")
         self.buttonModify = QtWidgets.QPushButton(self.L_ActividadCronogramas)
-        self.buttonModify.setGeometry(QtCore.QRect(470, 280, 75, 23))
+        self.buttonModify.setGeometry(QtCore.QRect(560, 280, 75, 23))
         self.buttonModify.setStyleSheet("background-color: rgb(255, 0, 127);\n"
                                         "background-color: rgb(85, 255, 0);")
         self.buttonModify.setObjectName("buttonModify")
@@ -160,26 +162,32 @@ class Ui_MainWindow(object):
         self.buttonAdd.setGeometry(QtCore.QRect(560, 250, 75, 23))
         self.buttonAdd.setStyleSheet("background-color: rgb(0, 255, 0);")
         self.buttonAdd.setObjectName("buttonAdd")
-        self.T_Cronogramas = QtWidgets.QTableWidget(
+        self.tableSchedules = QtWidgets.QTableWidget(
             self.L_ActividadCronogramas)
-        self.T_Cronogramas.setGeometry(QtCore.QRect(20, 310, 621, 161))
-        self.T_Cronogramas.setObjectName("T_Cronogramas")
-        self.T_Cronogramas.setColumnCount(4)
-        self.T_Cronogramas.setRowCount(0)
+        self.tableSchedules.setGeometry(QtCore.QRect(20, 310, 621, 161))
+        self.tableSchedules.setObjectName("tableSchedules")
+        self.tableSchedules.setColumnCount(4)
+        self.tableSchedules.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
-        self.T_Cronogramas.setHorizontalHeaderItem(0, item)
+        self.tableSchedules.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
-        self.T_Cronogramas.setHorizontalHeaderItem(1, item)
+        self.tableSchedules.setHorizontalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
-        self.T_Cronogramas.setHorizontalHeaderItem(2, item)
+        self.tableSchedules.setHorizontalHeaderItem(2, item)
         item = QtWidgets.QTableWidgetItem()
-        self.T_Cronogramas.setHorizontalHeaderItem(3, item)
+        self.tableSchedules.setHorizontalHeaderItem(3, item)
         self.BSalirCrongramas = QtWidgets.QPushButton(
             self.L_ActividadCronogramas)
         self.BSalirCrongramas.setGeometry(QtCore.QRect(30, 50, 75, 23))
         self.BSalirCrongramas.setStyleSheet(
             "background-color: rgb(255, 0, 0);")
         self.BSalirCrongramas.setObjectName("BSalirCrongramas")
+        self.label_28 = QtWidgets.QLabel(self.L_ActividadCronogramas)
+        self.label_28.setGeometry(QtCore.QRect(180, 280, 81, 20))
+        self.label_28.setObjectName("label_28")
+        self.inputPlaceOld = QtWidgets.QLineEdit(self.L_ActividadCronogramas)
+        self.inputPlaceOld.setGeometry(QtCore.QRect(260, 280, 113, 20))
+        self.inputPlaceOld.setObjectName("inputPlaceOld")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -197,8 +205,11 @@ class Ui_MainWindow(object):
             "MainWindow", "INGRESE EL ID PARA BUSCAR,ELIMINAR O MODIFICAR"))
         self.label_27.setText(_translate("MainWindow", "ACTIVIDAD:"))
         self.buttonSearch.setText(_translate("MainWindow", "BUSCAR"))
+        self.buttonSearch.clicked.connect(self.searchByID)
         self.buttonDelete.setText(_translate("MainWindow", "ELIMINAR"))
+        self.buttonDelete.clicked.connect(self.deleteByID)
         self.buttonModify.setText(_translate("MainWindow", "MODIFICAR"))
+        self.buttonModify.clicked.connect(self.modifyByID)
         self.textBrowser_2.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                               "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                               "p, li { white-space: pre-wrap; }\n"
@@ -211,15 +222,16 @@ class Ui_MainWindow(object):
         self.label_42.setText(_translate("MainWindow", "HORA:"))
         self.buttonAdd.setText(_translate("MainWindow", "AGREGAR"))
         self.buttonAdd.clicked.connect(self.addSchedule)
-        item = self.T_Cronogramas.horizontalHeaderItem(0)
+        item = self.tableSchedules.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Actividad"))
-        item = self.T_Cronogramas.horizontalHeaderItem(1)
+        item = self.tableSchedules.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "Alojamiento"))
-        item = self.T_Cronogramas.horizontalHeaderItem(2)
+        item = self.tableSchedules.horizontalHeaderItem(2)
         item.setText(_translate("MainWindow", "Dia"))
-        item = self.T_Cronogramas.horizontalHeaderItem(3)
+        item = self.tableSchedules.horizontalHeaderItem(3)
         item.setText(_translate("MainWindow", "Hora"))
         self.BSalirCrongramas.setText(_translate("MainWindow", "SALIR:"))
+        self.label_28.setText(_translate("MainWindow", "ALOJAMIENTO:"))
 
 
 if __name__ == "__main__":

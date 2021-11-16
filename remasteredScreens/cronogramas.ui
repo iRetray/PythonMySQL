@@ -162,7 +162,7 @@ background-color: rgb(85, 255, 0);</string>
        <rect>
         <x>80</x>
         <y>280</y>
-        <width>113</width>
+        <width>91</width>
         <height>20</height>
        </rect>
       </property>
@@ -170,7 +170,7 @@ background-color: rgb(85, 255, 0);</string>
      <widget class="QPushButton" name="buttonSearch">
       <property name="geometry">
        <rect>
-        <x>220</x>
+        <x>380</x>
         <y>280</y>
         <width>81</width>
         <height>21</height>
@@ -187,7 +187,7 @@ background-color: rgb(85, 255, 0);</string>
      <widget class="QPushButton" name="buttonDelete">
       <property name="geometry">
        <rect>
-        <x>340</x>
+        <x>470</x>
         <y>280</y>
         <width>75</width>
         <height>23</height>
@@ -204,7 +204,7 @@ background-color: rgb(85, 255, 0);</string>
      <widget class="QPushButton" name="buttonModify">
       <property name="geometry">
        <rect>
-        <x>470</x>
+        <x>560</x>
         <y>280</y>
         <width>75</width>
         <height>23</height>
@@ -391,6 +391,29 @@ p, li { white-space: pre-wrap; }
       </property>
       <property name="text">
        <string>SALIR:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_28">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>280</y>
+        <width>81</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>ALOJAMIENTO:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="inputPlaceOld">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>280</y>
+        <width>113</width>
+        <height>20</height>
+       </rect>
       </property>
      </widget>
     </widget>
